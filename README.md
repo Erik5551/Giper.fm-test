@@ -22,7 +22,7 @@
 
 ### 1.2 Создать OAuth 2.0 ключ
 
-1. Перейти в **Учётные данные** → **Создать учётные данные** → **OAuth client ID**
+1. Перейти в **Credentials** → **Create Credentials** → **OAuth client ID**
 2. Тип приложения: **Desktop application**
 3. Назвать (например, `Выгрузка таблиц`)
 4. Скачать файл `credentials.json`
