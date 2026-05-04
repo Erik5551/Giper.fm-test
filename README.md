@@ -73,7 +73,6 @@
 git clone https://github.com/Erik5551/Giper.fm-test.git
 ```
 ### 2.2 Установить зависимости
-cd 
 ```bash
 pip install pandas google-auth google-auth-oauthlib google-api-python-client
 ```
