@@ -49,7 +49,9 @@ pip install pandas google-auth google-auth-oauthlib google-api-python-client
 
 bash
 pip install -r requirements.txt
-2.2 Запустить скрипт
+
+###2.2 Запустить скрипт
+
 bash
 python main.py --sheet-id "ID_ВАШЕЙ_ТАБЛИЦЫ" --date "2026-03-01"
 Что нужно указать:
