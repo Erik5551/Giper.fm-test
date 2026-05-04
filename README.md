@@ -38,7 +38,7 @@
    - **Developer contact email:** выберите свою почту
 4. Нажмите **"SAVE AND CONTINUE"**
    
-5. **Добавить Scopes (разрешения):**
+5. **Добавить Data Access Scopes (разрешения):**
    - Нажмите **"ADD OR REMOVE SCOPES"**
    - В поиске введите `spreadsheets.readonly`
    - Отметьте галочкой `.../auth/spreadsheets.readonly`
@@ -67,7 +67,13 @@
    
 ## Этап 2. Установка и запуск
 
-### 2.1 Установить зависимости
+### 2.1 Клонирование
+
+```bash
+git clone https://github.com/Erik5551/Giper.fm-test.git
+```
+### 2.2 Установить зависимости
+cd 
 ```bash
 pip install pandas google-auth google-auth-oauthlib google-api-python-client
 ```
@@ -75,11 +81,11 @@ pip install pandas google-auth google-auth-oauthlib google-api-python-client
 ```bash
 pip install -r requirements.txt
 ```
-### 2.2 Запустить скрипт
+### 2.3 Запустить скрипт
 
-Для запуска используйте команду:
+Выполните команду в терминале:
 ```bash
-python main.py --sheet-id "ID_ВАШЕЙ_ТАБЛИЦЫ" --date "2026-03-01"
+python main.py --sheet-id "1AXGsVD1Dp4YfuKdaSfT5SY0detbbDmmMBzJXsLG7-30" --date "2026-03-01"
 ```
 **Что нужно указать:**
 * **`--sheet-id`** — ID таблицы (берётся из URL: `https://google.com<ID>/edit`)
@@ -98,52 +104,3 @@ python main.py --sheet-id "ID_ВАШЕЙ_ТАБЛИЦЫ" --date "2026-03-01"
 4. **Легко масштабируется**: при росте данных можно перейти на PostgreSQL без изменения логики работы с таблицами.
 
 
-## Этап 4. Полный цикл запуска (от клонирования до результата)
-### 4.1 Клонирование репозитория
-bash
-git clone <ссылка на ваш репозиторий>
-cd <папка проекта>
-### 4.2 Установка зависимостей
-
-```bash
-pip install -r requirements.txt
-```
-
-Если файла `requirements.txt` нет, создайте его:
-```bash
-pip freeze > requirements.txt
-```
-
-### 4.3 Подготовка файла credentials.json
-
-1. Перейдите в **Google Cloud Console**.
-2. Выберите проект → **API и сервисы** → **Учётные данные**.
-3. Нажмите **Создать учётные данные** → **OAuth client ID**.
-4. Тип приложения: **Desktop application**.
-5. Скачайте файл `credentials.json` и положите его в корневую папку проекта.
-
-### 4.4 Получение ID Google Таблицы
-
-1. Откройте вашу Google Таблицу в браузере.
-2. Посмотрите на URL:
-   ```text
-   https://docs.google.com/spreadsheets/d/1AXGsVD1Dp4YfuKdaSfT5SY0detbbDmmMBzJXsLG7-30/edit
-   ```
-3. Скопируйте часть после `/d/` и до `/edit`:
-   ```text
-   1AXGsVD1Dp4YfuKdaSfT5SY0detbbDmmMBzJXsLG7-30
-   ```
-Это и есть ваш **`--sheet-id`**.
-
-### 4.5 Предоставление доступа к таблице
-
-1. В Google Таблице нажмите кнопку **Настройки доступа** (в правом верхнем углу).
-2. Добавьте почту, которая указана в `credentials.json` (обычно ваш Google-аккаунт).
-3. Предоставьте доступ на **Чтение** или **Редактирование**.
-
-### 4.6 Запуск скрипта
-
-Выполните команду в терминале:
-```bash
-python main.py --sheet-id "1AXGsVD1Dp4YfuKdaSfT5SY0detbbDmmMBzJXsLG7-30" --date "2026-03-01"
-```
