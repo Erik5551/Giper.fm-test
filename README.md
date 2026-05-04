@@ -16,27 +16,55 @@
 
 ### 1.1 Создать проект в Google Cloud Console
 
-1. Перейти на [Google Cloud Console](https://console.cloud.google.com/)
-2. Создать новый проект (или выбрать существующий)
-3. Включить **Google Sheets API** (библиотека → API и сервисы → включить)
+1. Перейдите на [Google Cloud Console](https://console.cloud.google.com/)
+2. Вверху слева нажмите на выпадающий список проектов → выберите **"NEW PROJECT"**
+3. Введите имя проекта (например, `Sheets API Project`)
+4. Нажмите **"CREATE"**
 
-### 1.2 Создать OAuth 2.0 ключ
+### 1.2 Включить Google Sheets API
 
-1. Перейти в **Credentials** → **Create Credentials** → **OAuth client ID**
-2. Тип приложения: **Desktop application**
-3. Назвать (например, `Выгрузка таблиц`)
-4. Скачать файл `credentials.json`
-5. Положить файл в корневую папку проекта
+1. В левом меню: **"APIs & Services"** → **"Library"**
+2. В поиске введите `Google Sheets API`
+3. Нажмите на карточку **"Google Sheets API"**
+4. Нажмите **"ENABLE"**
 
-Никому не передавайте `credentials.json`. Он используется для авторизации от вашего имени.
+### 1.3 Настроить экран согласия OAuth (Scopes)
 
-### 1.3 Предоставить доступ к таблице
+1. В левом меню: **"APIs & Services"** → **"OAuth consent screen"**
+2. Выберите **"External"** → нажмите **"CREATE"**
+3. Заполните поля:
+   - **App name:** `Data Upload Script`
+   - **User support email:** выберите свою почту
+   - **Developer contact email:** выберите свою почту
+4. Нажмите **"SAVE AND CONTINUE"**
+   
+5. **Добавить Scopes (разрешения):**
+   - Нажмите **"ADD OR REMOVE SCOPES"**
+   - В поиске введите `spreadsheets.readonly`
+   - Отметьте галочкой `.../auth/spreadsheets.readonly`
+   - Нажмите **"UPDATE"**
+   - Нажмите **"SAVE AND CONTINUE"**
+   - 
+6. **Добавить тестовых пользователей (ВАЖНО!):**
+   - Найдите раздел **"Test users"**
+   - Нажмите **"ADD USERS"**
+   - Введите свою почту (ту, с которой будете запускать скрипт)
+   - Нажмите **"ADD"**
+   - Нажмите **"SAVE AND CONTINUE"**
+  
+### 1.4 Создать и скачать credentials.json
 
-1. Открыть Google Таблицу, из которой нужно выгрузить данные
-2. Нажать **Настройки доступа** → добавить почту, которая указана в `credentials.json` (обычно ваш Google-аккаунт)
-3. Дать доступ **на чтение**
+1. В левом меню: **"APIs & Services"** → **"Credentials"**
+2. Нажмите **"+ CREATE CREDENTIALS"** → **"OAuth client ID"**
+3. Заполните форму:
+   - **Application type:** выберите **"Desktop app"**
+   - **Name:** `My Computer`
+4. Нажмите **"CREATE"**
+5. Во всплывающем окне нажмите на **иконку скачивания** рядом с вашим ID
+6. Скачается файл `client_secret_....json` → **переименуйте** в `credentials.json`
+7. Положите `credentials.json` в папку с проектом
 
-
+   
 ## Этап 2. Установка и запуск
 
 ### 2.1 Установить зависимости
